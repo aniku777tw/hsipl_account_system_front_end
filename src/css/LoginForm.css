@@ -12,3 +12,14 @@
   height: 350px;
   width: 400px;
 }
+
+
+@media screen and (max-width: 960px) {
+    .login-form {
+        padding: 10px 20px;
+        justify-content: space-around;
+        height: 300px;
+        width: 300px;
+        outline:1;
+      }
+  }

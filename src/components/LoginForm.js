@@ -30,42 +30,47 @@ function LoginForm(props) {
   }, [username, password]);
 
   const submitLogin = async (e) => {
+    e.preventDefault();
     login(username, password);
   };
 
   return (
     <div className="wrapper">
       <Paper elevation={20}>
-        <Stack className="login-form">
-          <label>記帳系統登入</label>
-          <TextField
-            required
-            autoFocus
-            label="Username"
-            value={username}
-            onChange={(e) => setUseranme(e.target.value)}
-          ></TextField>
-          <TextField
-            required
-            label="Password"
-            value={password}
-            type={showPassword ? "text" : "password"}
-            onChange={(e) => setPassword(e.target.value)}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          ></TextField>
-          <Button onClick={submitLogin}>Login</Button>
-        </Stack>
+        <form onSubmit = {submitLogin}>
+          <Stack className="login-form">
+            <label>記帳系統登入</label>
+            <TextField
+              required
+              autoFocus
+              label="Username"
+              value={username}
+              onChange={(e) => setUseranme(e.target.value)}
+            ></TextField>
+            <TextField
+              required
+              label="Password"
+              value={password}
+              type={showPassword ? "text" : "password"}
+              onChange={(e) => setPassword(e.target.value)}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            ></TextField>
+            <Button type="submit">
+              Login
+            </Button>
+          </Stack>
+        </form>
       </Paper>
     </div>
   );
