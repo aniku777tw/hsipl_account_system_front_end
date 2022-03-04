@@ -1,18 +1,14 @@
-
-.wrapper{
-    text-align:center;
-    height: 100vh; /* Magic here */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.wrapper {
+  text-align: center;
+  height: 100vh; /* Magic here */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.login-form{
-    
-    padding: 10px 20px;
-    justify-content: space-around;
-    height: 250px;
-    width: 300px;
-
+.login-form {
+  padding: 10px 20px;
+  justify-content: space-around;
+  height: 350px;
+  width: 400px;
 }

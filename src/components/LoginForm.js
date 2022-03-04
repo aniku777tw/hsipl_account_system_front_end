@@ -1,35 +1,70 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
-import { Paper, TextField, Button, Stack } from "@mui/material";
+import {
+  Paper,
+  TextField,
+  Button,
+  Stack,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+
 import "../css/LoginForm.css";
+import { login } from "../service/Api.js";
 
 function LoginForm(props) {
-  const userRef = useRef(null);
-  const errRef = useRef();
+  const errRef = useRef(); // TODO error handle
 
-  const [user, setUser] = useState("");
+  const [username, setUseranme] = useState("");
   const [password, setPassword] = useState("");
-  const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState("");
+  const [errMsg, setErrMsg] = useState(""); // TODO error handle
+  const [success, setSuccess] = useState(""); // TODO success handle
 
-  useEffect(() => {
-    if (null !== userRef.current) {
-      userRef.current.focus();
-    }
-  }, []);
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
   useEffect(() => {
     setErrMsg("");
-  }, [user, password]);
+  }, [username, password]);
+
+  const submitLogin = async (e) => {
+    login(username, password);
+  };
 
   return (
     <div className="wrapper">
       <Paper elevation={20}>
         <Stack className="login-form">
           <label>記帳系統登入</label>
-          <TextField label='Username'></TextField>
-          <TextField label='Password'></TextField>
-          <Button>Login</Button>
+          <TextField
+            required
+            autoFocus
+            label="Username"
+            value={username}
+            onChange={(e) => setUseranme(e.target.value)}
+          ></TextField>
+          <TextField
+            required
+            label="Password"
+            value={password}
+            type={showPassword ? "text" : "password"}
+            onChange={(e) => setPassword(e.target.value)}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          ></TextField>
+          <Button onClick={submitLogin}>Login</Button>
         </Stack>
       </Paper>
     </div>
