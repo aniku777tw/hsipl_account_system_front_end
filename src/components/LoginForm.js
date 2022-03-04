@@ -37,7 +37,7 @@ function LoginForm(props) {
   return (
     <div className="wrapper">
       <Paper elevation={20}>
-        <form onSubmit = {submitLogin}>
+        <form onSubmit={submitLogin}>
           <Stack className="login-form">
             <label>記帳系統登入</label>
             <TextField
@@ -66,9 +66,7 @@ function LoginForm(props) {
                 ),
               }}
             ></TextField>
-            <Button type="submit">
-              Login
-            </Button>
+            <Button type="submit">Login</Button>
           </Stack>
         </form>
       </Paper>
