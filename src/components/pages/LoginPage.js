@@ -10,8 +10,8 @@ import {
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-import "../css/LoginForm.css";
-import { login } from "../service/Api.js";
+import "../../css/LoginForm.css";
+import authService from "../../service/Auth.js";
 
 function LoginForm(props) {
   const errRef = useRef(); // TODO error handle
@@ -30,8 +30,8 @@ function LoginForm(props) {
   }, [username, password]);
 
   const submitLogin = async (e) => {
-    e.preventDefault();
-    login(username, password);
+    // e.preventDefault();
+    authService.login(username, password);
   };
 
   return (
