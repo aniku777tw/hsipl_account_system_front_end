@@ -32,7 +32,7 @@ function SignUpPage() {
             <label>記帳系統註冊</label>
             <TextField
               required
-              // autoFocus
+              autoFocus
               label="帳號"
               placeholder="帳號"
               value={username}
@@ -82,14 +82,12 @@ function SignUpPage() {
             <Divider></Divider>
             <div className="login-row">
               <Button>忘記密碼?</Button>
-              <Button onClick={() => localStorage.removeItem("user")}>
-                <Link
-                  to="/login"
-                  style={{ textDecoration: "none", color: "#1976D2" }}
-                >
-                  登入
-                </Link>
-              </Button>
+              <Link
+                to="/login"
+                style={{ textDecoration: "none", color: "#1976D2" }}
+              >
+                <Button>登入</Button>
+              </Link>
             </div>
           </Stack>
         </form>

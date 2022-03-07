@@ -62,23 +62,21 @@ function LoginPage() {
                 ),
               }}
             ></TextField>
-            <Button type="submit"><Link
-                  to="/home"
-                  style={{ textDecoration: "none", color: "#1976D2" }}
-                >
-                  登入
-                </Link></Button>
+            <Link
+              to="/home"
+              style={{ textDecoration: "none", color: "#1976D2" }}
+            >
+              <Button type="submit">登入</Button>
+            </Link>
             <Divider></Divider>
             <div className="sign-up-row">
               <Button>忘記密碼?</Button>
-              <Button>
-                <Link
-                  to="/signup"
-                  style={{ textDecoration: "none", color: "#1976D2" }}
-                >
-                  註冊
-                </Link>
-              </Button>
+              <Link
+                to="/signup"
+                style={{ textDecoration: "none", color: "#1976D2" }}
+              >
+                <Button>註冊</Button>
+              </Link>
             </div>
           </Stack>
         </form>

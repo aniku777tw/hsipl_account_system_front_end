@@ -54,14 +54,12 @@ function Header() {
           <Typography component="div" sx={{ flexGrow: 1, color: "#1976D2" }}>
             記帳系統
           </Typography>
-          <Button onClick={() => localStorage.removeItem("user")}>
-            <Link
-              to="/login"
-              style={{ textDecoration: "none", color: "#1976D2" }}
-            >
-              登出
-            </Link>
-          </Button>
+          <Link
+                to="/login"
+                style={{ textDecoration: "none", color: "#1976D2" }}
+              >
+                <Button>登出</Button>
+              </Link>
         </Toolbar>
       </AppBar>
     </Box>
