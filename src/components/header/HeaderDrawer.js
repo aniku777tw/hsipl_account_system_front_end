@@ -7,24 +7,24 @@ import {
   ListItemText,
   Divider,
   Avatar,
+  Stack,
 } from "@mui/material";
 import React from "react";
 import { Home, Money, Info } from "@mui/icons-material";
+import "../../css/header/HeaderDrawer.css";
 
 function HeaderDrawer({ controller, state }) {
   let drawerLabelText = ["首頁", "經費表", "關於"];
   let drawerLabelIcon = [<Home />, <Money />, <Info />];
-  const list = () => (
-    <Box
-      sx={{ width: 300 }}
-      role="presentation"
-      onClick={controller}
-      onKeyDown={controller}
-    >
+  const drawerElement = () => (
+    <Box sx={{ width: 300 }} onClick={controller} onKeyDown={controller}>
+
       <List>
-        <Avatar></Avatar>
-        <h1>your name</h1>
-        <Divider></Divider>
+      <div className="avatar">
+        <Avatar sx={{ width: 70, height: 70 }} ></Avatar>
+        <label>your name</label>
+      </div>
+      <Divider></Divider>
         {drawerLabelText.map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>{drawerLabelIcon[index]}</ListItemIcon>
@@ -37,7 +37,7 @@ function HeaderDrawer({ controller, state }) {
   return (
     <div>
       <Drawer anchor="left" open={state} onClose={controller}>
-        {list()}
+        {drawerElement()}
       </Drawer>
     </div>
   );
