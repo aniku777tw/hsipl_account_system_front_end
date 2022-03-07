@@ -2,7 +2,8 @@ import axios from "axios";
 
 const config = {
   baseURL: "http://140.125.45.160:6969/api",
-  headers: { "Content-Type": "application/json" },
+  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  withCredentials: true,
 };
 
 async function login(username, password) {
@@ -11,6 +12,7 @@ async function login(username, password) {
     if (response.data.token) {
       localStorage.setItem("user", JSON.stringify(response.data.token));
     }
+    console.log(response.data.token)
     return response.data.token;
   });
 }

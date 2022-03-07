@@ -7,13 +7,14 @@ import {
   Stack,
   InputAdornment,
   IconButton,
+  Divider,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-import "../../css/LoginForm.css";
+import "../../css/LoginPage.css";
 import authService from "../../service/Auth.js";
 
-function LoginForm(props) {
+function LoginForm() {
   const errRef = useRef(); // TODO error handle
 
   const [username, setUseranme] = useState("");
@@ -30,8 +31,9 @@ function LoginForm(props) {
   }, [username, password]);
 
   const submitLogin = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     authService.login(username, password);
+
   };
 
   return (
@@ -42,14 +44,16 @@ function LoginForm(props) {
             <label>記帳系統登入</label>
             <TextField
               required
-              autoFocus
-              label="Username"
+              // autoFocus
+              label="帳號"
+              placeholder = "帳號"
               value={username}
               onChange={(e) => setUseranme(e.target.value)}
             ></TextField>
             <TextField
               required
-              label="Password"
+              label="密碼"
+              placeholder = "密碼"
               value={password}
               type={showPassword ? "text" : "password"}
               onChange={(e) => setPassword(e.target.value)}
@@ -66,7 +70,13 @@ function LoginForm(props) {
                 ),
               }}
             ></TextField>
-            <Button type="submit">Login</Button>
+            <Button type="submit">登入</Button>
+            <Divider></Divider>
+            <div className="sign-up-row">
+            <Button >忘記密碼?</Button>
+            <Button >註冊</Button>
+            </div>
+            
           </Stack>
         </form>
       </Paper>
