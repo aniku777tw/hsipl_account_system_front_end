@@ -1,8 +1,13 @@
 import React from "react";
-import Header from "../Header";
+import logo from "../../logo.png";
+import "../../css/pages/HomePage.css";
 
 function HomePage() {
-  return <Header></Header>;
+  return (
+    <div className="wrapper">
+      <img className="logo" src={logo} alt="Logo"></img>
+    </div>
+  );
 }
 
 export default HomePage;

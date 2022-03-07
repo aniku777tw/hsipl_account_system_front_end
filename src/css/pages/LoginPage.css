@@ -14,20 +14,18 @@
   width: 400px;
 }
 
-.sign-up-row{
-    height: 30px;
-    display: flex;
-    justify-content: space-between;
-
+.sign-up-row {
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
 }
 
-
 @media screen and (max-width: 960px) {
-    .login-form {
-        display: none;
-        padding: 10px 20px;
-        justify-content: space-around;
-        height: 300px;
-        width: 300px;
-      }
+  .login-form {
+    display: none;
+    padding: 10px 20px;
+    justify-content: space-around;
+    height: 300px;
+    width: 300px;
   }
+}

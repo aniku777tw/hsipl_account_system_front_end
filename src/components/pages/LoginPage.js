@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-import "../../css/LoginPage.css";
+import "../../css/pages/LoginPage.css";
 import authService from "../../service/Auth.js";
 
 function LoginForm() {
@@ -33,7 +33,6 @@ function LoginForm() {
   const submitLogin = async (e) => {
     e.preventDefault();
     authService.login(username, password);
-
   };
 
   return (
@@ -46,14 +45,14 @@ function LoginForm() {
               required
               // autoFocus
               label="帳號"
-              placeholder = "帳號"
+              placeholder="帳號"
               value={username}
               onChange={(e) => setUseranme(e.target.value)}
             ></TextField>
             <TextField
               required
               label="密碼"
-              placeholder = "密碼"
+              placeholder="密碼"
               value={password}
               type={showPassword ? "text" : "password"}
               onChange={(e) => setPassword(e.target.value)}
@@ -73,10 +72,9 @@ function LoginForm() {
             <Button type="submit">登入</Button>
             <Divider></Divider>
             <div className="sign-up-row">
-            <Button >忘記密碼?</Button>
-            <Button >註冊</Button>
+              <Button>忘記密碼?</Button>
+              <Button>註冊</Button>
             </div>
-            
           </Stack>
         </form>
       </Paper>

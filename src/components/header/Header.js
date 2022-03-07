@@ -8,8 +8,8 @@ import {
 } from "@mui/material";
 import { Menu } from "@mui/icons-material";
 import React, { useState } from "react";
-import toggleDrawer from "./HeaderDrawer.js";
 import HeaderDrawer from "./HeaderDrawer.js";
+import "../../css/header/Header.css";
 
 function Header() {
   const [drawerState, setDrawerState] = useState(false);
@@ -25,12 +25,17 @@ function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <HeaderDrawer
-          state={drawerState}
-          controller={drawerController}
-        ></HeaderDrawer>
-        <Toolbar>
+      <HeaderDrawer
+        state={drawerState}
+        controller={drawerController}
+      ></HeaderDrawer>
+      <AppBar
+        className="nav"
+        position="absolute"
+        elevation={5}
+        style={{ background: "#FFFFFF" }}
+      >
+        <Toolbar className="toolbar">
           <IconButton
             onClick={drawerController}
             size="large"
@@ -39,12 +44,12 @@ function Header() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <Menu />
+            <Menu style={{ color: "#1976D2" }} />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            CurrentPage
+          <Typography component="div" sx={{ flexGrow: 1, color: "#1976D2" }}>
+            首頁
           </Typography>
-          <Button color="inherit">Logout</Button>
+          <Button>登出</Button>
         </Toolbar>
       </AppBar>
     </Box>

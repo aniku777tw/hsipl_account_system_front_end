@@ -1,0 +1,12 @@
+.toolbar {
+  height: 100px;
+}
+.nav {
+  text-align: center;
+}
+
+@media screen and (max-width: 960px) {
+  .toolbar {
+    height: 70px;
+  }
+}

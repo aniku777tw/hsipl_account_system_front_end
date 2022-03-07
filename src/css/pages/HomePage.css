@@ -1,0 +1,23 @@
+.wrapper {
+  text-align: center;
+  height: 100vh; /* Magic here */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 700px;
+}
+
+@media screen and (max-width: 960px) {
+  .logo {
+    height: 300px;
+  }
+}
