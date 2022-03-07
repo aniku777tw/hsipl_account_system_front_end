@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import "../../css/pages/SignUpPage.css";
+import { Link } from "react-router-dom";
 function SignUpPage() {
   const [username, setUseranme] = useState("");
   const [password, setPassword] = useState("");
@@ -81,7 +82,14 @@ function SignUpPage() {
             <Divider></Divider>
             <div className="login-row">
               <Button>忘記密碼?</Button>
-              <Button>登入</Button>
+              <Button onClick={() => localStorage.removeItem("user")}>
+                <Link
+                  to="/login"
+                  style={{ textDecoration: "none", color: "#1976D2" }}
+                >
+                  登入
+                </Link>
+              </Button>
             </div>
           </Stack>
         </form>

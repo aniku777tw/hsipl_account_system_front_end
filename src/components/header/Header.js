@@ -10,6 +10,7 @@ import { Menu } from "@mui/icons-material";
 import React, { useState } from "react";
 import HeaderDrawer from "./HeaderDrawer.js";
 import "../../css/header/Header.css";
+import { Link, useLocation } from "react-router-dom";
 
 function Header() {
   const [drawerState, setDrawerState] = useState(false);
@@ -22,7 +23,11 @@ function Header() {
     }
     setDrawerState(!drawerState);
   }
-
+  const location = useLocation();
+  console.log(location.pathname);
+  if (location.pathname == "/login" || location.pathname == "/signup") {
+    return null;
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <HeaderDrawer
@@ -47,9 +52,16 @@ function Header() {
             <Menu style={{ color: "#1976D2" }} />
           </IconButton>
           <Typography component="div" sx={{ flexGrow: 1, color: "#1976D2" }}>
-            首頁
+            記帳系統
           </Typography>
-          <Button>登出</Button>
+          <Button onClick={() => localStorage.removeItem("user")}>
+            <Link
+              to="/login"
+              style={{ textDecoration: "none", color: "#1976D2" }}
+            >
+              登出
+            </Link>
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>

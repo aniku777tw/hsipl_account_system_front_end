@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import {
   Paper,
   TextField,
@@ -13,26 +13,19 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 import "../../css/pages/LoginPage.css";
 import authService from "../../service/Auth.js";
+import { Link } from "react-router-dom";
 
-function LoginForm() {
-  const errRef = useRef(); // TODO error handle
-
+function LoginPage() {
   const [username, setUseranme] = useState("");
   const [password, setPassword] = useState("");
-  const [errMsg, setErrMsg] = useState(""); // TODO error handle
-  const [success, setSuccess] = useState(""); // TODO success handle
 
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
-  useEffect(() => {
-    setErrMsg("");
-  }, [username, password]);
-
   const submitLogin = async (e) => {
     e.preventDefault();
-    authService.login(username, password);
+    // authService.login(username, password);
   };
 
   return (
@@ -43,7 +36,7 @@ function LoginForm() {
             <label>記帳系統登入</label>
             <TextField
               required
-              // autoFocus
+              autoFocus
               label="帳號"
               placeholder="帳號"
               value={username}
@@ -69,11 +62,23 @@ function LoginForm() {
                 ),
               }}
             ></TextField>
-            <Button type="submit">登入</Button>
+            <Button type="submit"><Link
+                  to="/home"
+                  style={{ textDecoration: "none", color: "#1976D2" }}
+                >
+                  登入
+                </Link></Button>
             <Divider></Divider>
             <div className="sign-up-row">
               <Button>忘記密碼?</Button>
-              <Button>註冊</Button>
+              <Button>
+                <Link
+                  to="/signup"
+                  style={{ textDecoration: "none", color: "#1976D2" }}
+                >
+                  註冊
+                </Link>
+              </Button>
             </div>
           </Stack>
         </form>
@@ -82,4 +87,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default LoginPage;
