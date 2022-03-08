@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import {
   Paper,
   TextField,
@@ -17,14 +17,10 @@ function SignUpPage() {
   const [username, setUseranme] = useState("");
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
-  const [errMsg, setErrMsg] = useState(""); // TODO error handle
+  // TODO error handle
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
-
-  useEffect(() => {
-    setErrMsg("");
-  }, [username, password]);
 
   return (
     <div className="wrapper">

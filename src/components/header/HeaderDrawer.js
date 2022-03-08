@@ -7,7 +7,6 @@ import {
   ListItemText,
   Divider,
   Avatar,
-  Stack,
 } from "@mui/material";
 import React from "react";
 import { Home, Money, Info } from "@mui/icons-material";

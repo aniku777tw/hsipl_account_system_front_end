@@ -21,7 +21,7 @@ function InfoPage() {
             });
           }}
         >
-          FundPageTest
+          InfoPageTest
         </Button>
         <div>{JSON.stringify(test)}</div>
       </motion.div>

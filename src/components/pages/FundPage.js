@@ -12,7 +12,7 @@ function FundPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: "spring", stiffness: 200, duration: 0.1 }}
       >
-        <div>InfoPage</div>
+        <div>FundPage</div>
       </motion.div>
     </div>
   );

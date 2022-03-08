@@ -13,6 +13,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import PrivateRoutes from "./router/PrivateRoute";
 
 function App() {
   return (
@@ -21,12 +22,14 @@ function App() {
         <Header />
         <AnimatePresence exitBeforeEnter>
           <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="/fund" element={<FundPage />} />
-            <Route path="/info" element={<InfoPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="*" element={<Navigate to="/login" />} />
+            <Route element={<PrivateRoutes />}>
+              <Route path="/home" element={<Home />} />
+              <Route path="/fund" element={<FundPage />} />
+              <Route path="/info" element={<InfoPage />} />
+            </Route>
           </Routes>
         </AnimatePresence>
       </Router>
