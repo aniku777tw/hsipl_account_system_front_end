@@ -1,18 +1,12 @@
 import axios from "axios";
 
-const config = {
-  baseURL: "http://140.125.45.160:6969/api",
-  headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  withCredentials: true,
-};
-
 async function login(username, password) {
   let postData = JSON.stringify({ username: "user", password: "password" });
-  await axios.post("user/login", postData, config).then((response) => {
+  await axios.post("user/login", postData).then((response) => {
     if (response.data.token) {
       localStorage.setItem("user", JSON.stringify(response.data.token));
     }
-    console.log(response.data.token)
+    console.log(response.data.token);
     return response.data.token;
   });
 }
@@ -21,9 +15,9 @@ const getUser = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
 
-const authService = {
+const AuthService = {
   getUser,
   login,
 };
 
-export default authService;
+export default AuthService;

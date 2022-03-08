@@ -25,7 +25,7 @@ function Header() {
   }
   const location = useLocation();
   console.log(location.pathname);
-  if (location.pathname == "/login" || location.pathname == "/signup") {
+  if (localStorage.getItem('user')===null) {
     return null;
   }
   return (
@@ -58,7 +58,7 @@ function Header() {
                 to="/login"
                 style={{ textDecoration: "none", color: "#1976D2" }}
               >
-                <Button>登出</Button>
+                <Button onClick={()=>{localStorage.removeItem('user')}}>登出</Button>
               </Link>
         </Toolbar>
       </AppBar>
