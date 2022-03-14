@@ -1,9 +1,20 @@
+.alert{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+
 .wrapper {
+
   text-align: center;
   height: 100vh; /* Magic here */
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .login-form {
@@ -11,7 +22,7 @@
   padding: 10px 20px;
   justify-content: space-around;
   height: 45vh;
-  width: 40vw;
+  width: 20vw;
 }
 
 .sign-up-row {
@@ -21,11 +32,22 @@
 }
 
 @media screen and (max-width: 960px) {
+  .alert{
+    width: 100%;
+    position: sticky;
+    top: 0;
+    
+
+  }
   .login-form {
+    position: relative;
     display: none;
     padding: 10px 20px;
     justify-content: space-around;
     height: 40vh;
     width: 70vw;
   }
+
+
+  
 }
