@@ -13,15 +13,22 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import "../../css/pages/SignUpPage.css";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import AuthService from "../../service/Auth.js";
 function SignUpPage() {
-  const [username, setUseranme] = useState("");
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
   // TODO error handle
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
-
+  const submitSignup = async (e) => {
+    e.preventDefault();
+    AuthService.signup(name,username, password,checkPassword).then(() => {
+      console.log("good")
+    });
+  };
   return (
     <div className="wrapper">
       <motion.div
@@ -31,16 +38,23 @@ function SignUpPage() {
         transition={{ type: "spring", stiffness: 200, duration: 0.1 }}
       >
         <Paper elevation={20}>
-          <form>
+          <form onSubmit={submitSignup}>
             <Stack className="sign-up-form">
               <label>記帳系統註冊</label>
               <TextField
                 required
                 autoFocus
+                label="姓名"
+                placeholder="姓名"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              ></TextField>
+              <TextField
+                required
                 label="帳號"
                 placeholder="帳號"
                 value={username}
-                onChange={(e) => setUseranme(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
               ></TextField>
               <TextField
                 required

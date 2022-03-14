@@ -4,8 +4,8 @@ import AuthService from "./Auth.js";
 async function searchUser() {
   let user = "";
   axios.defaults.headers.common["Authorization"] = AuthService.getUser();
-  let postData = JSON.stringify({ name: "CarlChen" });
-  await axios.post("user/15", postData).then((response) => {
+  let postData = JSON.stringify({ name: "user" });
+  await axios.post("user/find/", postData).then((response) => {
     if (response.data.detail) {
       user = response.data.detail;
     }

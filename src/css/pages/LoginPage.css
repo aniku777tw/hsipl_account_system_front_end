@@ -10,8 +10,8 @@
   display: flex;
   padding: 10px 20px;
   justify-content: space-around;
-  height: 350px;
-  width: 400px;
+  height: 45vh;
+  width: 40vw;
 }
 
 .sign-up-row {
@@ -25,7 +25,7 @@
     display: none;
     padding: 10px 20px;
     justify-content: space-around;
-    height: 300px;
-    width: 300px;
+    height: 40vh;
+    width: 70vw;
   }
 }

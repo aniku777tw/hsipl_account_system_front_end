@@ -8,6 +8,7 @@ import {
   InputAdornment,
   IconButton,
   Divider,
+  Typography,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
@@ -19,6 +20,10 @@ import { motion } from "framer-motion";
 function LoginPage() {
   let navigate = useNavigate();
   const [username, setUseranme] = useState("");
+  const [usernameCheck, setUsernameCheck] = useState(false);
+  const [usernameHint, setUsernameHint] = useState("");
+  const [passwordCheck, setPasswordCheck] = useState(false);
+  const [passwordHint, setPasswordHint] = useState("");
   const [password, setPassword] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
@@ -32,6 +37,26 @@ function LoginPage() {
     });
   };
 
+  const checkUser = (user) => {
+    if (user === "") {
+      setUsernameCheck(true);
+      setUsernameHint("不能為空");
+    } else {
+      setUsernameCheck(false);
+      setUsernameHint("");
+    }
+  };
+
+  const checkPassword = (password) => {
+    if (password === "") {
+      setPasswordCheck(true);
+      setPasswordHint("不能為空");
+    } else {
+      setPasswordCheck(false);
+      setPasswordHint("");
+    }
+  };
+
   return (
     <div className="wrapper">
       <motion.div
@@ -43,14 +68,19 @@ function LoginPage() {
         <Paper elevation={20}>
           <form onSubmit={submitLogin}>
             <Stack className="login-form">
-              <label>記帳系統登入</label>
+              <Typography variant="h5">記帳系統登入</Typography>
               <TextField
                 required
                 autoFocus
+                error={usernameCheck}
                 label="帳號"
                 placeholder="帳號"
+                helperText={usernameHint}
                 value={username}
-                onChange={(e) => setUseranme(e.target.value)}
+                onChange={(e) => {
+                  setUseranme(e.target.value);
+                  checkUser(e.target.value);
+                }}
               ></TextField>
               <TextField
                 required
@@ -58,7 +88,12 @@ function LoginPage() {
                 placeholder="密碼"
                 value={password}
                 type={showPassword ? "text" : "password"}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  checkPassword(e.target.value);
+                }}
+                error={passwordCheck}
+                helperText={passwordHint}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -72,13 +107,16 @@ function LoginPage() {
                   ),
                 }}
               ></TextField>
-              {/* <Link
-              to="/home"
-              style={{ textDecoration: "none", color: "#1976D2" }}
-            > */}
-              <Button type="submit">登入</Button>
-              {/* </Link> */}
-              <Divider></Divider>
+              <Button
+                type="submit"
+                onClick={() => {
+                  checkUser(username);
+                  checkPassword(password);
+                }}
+              >
+                登入
+              </Button>
+              <Divider />
               <div className="sign-up-row">
                 <Button>忘記密碼?</Button>
                 <Link
