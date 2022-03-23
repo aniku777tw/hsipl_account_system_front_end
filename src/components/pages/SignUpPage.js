@@ -14,12 +14,21 @@ import "../../css/pages/SignUpPage.css";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import AuthService from "../../service/Auth.js";
+import Validation from "../../method/CheckLoginSignup.js";
 function SignUpPage() {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
-  // TODO error handle
+  
+  const [nameError, setNameError] = useState(false);
+  const [nameHint, setNameHint] = useState("");
+  const [usernameError, setUsernameError] = useState(false);
+  const [usernameHint, setUsernameHint] = useState("");
+  const [passwordError, setPasswordError] = useState(false);
+  const [passwordHint, setPasswordHint] = useState("");
+
+
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
@@ -47,22 +56,49 @@ function SignUpPage() {
                 label="姓名"
                 placeholder="姓名"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                error = {nameError}
+                helperText = {nameHint}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  Validation.checkString(
+                    e.target.value,
+                    setNameError,
+                    setNameHint
+                  );
+                }}
               ></TextField>
               <TextField
                 required
                 label="帳號"
                 placeholder="帳號"
+                error={usernameError}
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                helperText={usernameHint}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                  Validation.checkString(
+                    e.target.value,
+                    setUsernameError,
+                    setUsernameHint
+                  );
+                }}
               ></TextField>
               <TextField
                 required
                 label="密碼"
                 placeholder="密碼"
                 value={password}
+                error={passwordError}
+                helperText={passwordHint}
                 type={showPassword ? "text" : "password"}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  Validation.checkString(
+                    e.target.value,
+                    setPasswordError,
+                    setPasswordHint
+                  );
+                }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -81,6 +117,7 @@ function SignUpPage() {
                 label="確認密碼"
                 placeholder="確認密碼"
                 value={checkPassword}
+                error={passwordError}
                 type={showPassword ? "text" : "password"}
                 onChange={(e) => setCheckPassword(e.target.value)}
                 InputProps={{

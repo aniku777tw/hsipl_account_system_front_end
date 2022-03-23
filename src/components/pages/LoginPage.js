@@ -23,9 +23,9 @@ import Validation from "../../method/CheckLoginSignup.js";
 function LoginPage() {
   let navigate = useNavigate();
   const [username, setUseranme] = useState("");
-  const [usernameCheck, setUsernameCheck] = useState(false);
+  const [usernameError, setUsernameError] = useState(false);
   const [usernameHint, setUsernameHint] = useState("");
-  const [passwordCheck, setPasswordCheck] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
   const [passwordHint, setPasswordHint] = useState("");
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState(false);
@@ -72,7 +72,7 @@ function LoginPage() {
                 <TextField
                   required
                   autoFocus
-                  error={usernameCheck}
+                  error={usernameError}
                   label="帳號"
                   placeholder="帳號"
                   helperText={usernameHint}
@@ -81,7 +81,7 @@ function LoginPage() {
                     setUseranme(e.target.value);
                     Validation.checkString(
                       e.target.value,
-                      setUsernameCheck,
+                      setUsernameError,
                       setUsernameHint
                     );
                   }}
@@ -96,11 +96,11 @@ function LoginPage() {
                     setPassword(e.target.value);
                     Validation.checkString(
                       e.target.value,
-                      setPasswordCheck,
+                      setPasswordError,
                       setPasswordHint
                     );
                   }}
-                  error={passwordCheck}
+                  error={passwordError}
                   helperText={passwordHint}
                   InputProps={{
                     endAdornment: (
@@ -118,9 +118,9 @@ function LoginPage() {
                 <Button
                   type="submit"
                   onClick={() => {
-                    Validation.checkString(username,setUsernameCheck,
+                    Validation.checkString(username,setUsernameError,
                       setUsernameHint);
-                    Validation.checkString(password,setPasswordCheck,
+                    Validation.checkString(password,setPasswordError,
                       setPasswordHint);
                     setAlert(true);
                   }}
