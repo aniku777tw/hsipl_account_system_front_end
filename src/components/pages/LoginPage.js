@@ -10,7 +10,7 @@ import {
   Divider,
   Typography,
   Alert,
-  Fade ,
+  Fade,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
@@ -18,6 +18,7 @@ import "../../css/pages/LoginPage.css";
 import AuthService from "../../service/Auth.js";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import Validation from "../../method/CheckLoginSignup.js";
 
 function LoginPage() {
   let navigate = useNavigate();
@@ -40,53 +41,30 @@ function LoginPage() {
     });
   };
 
-  const checkUser = (user) => {
-    if (user === "") {
-      setUsernameCheck(true);
-      setUsernameHint("不能為空");
-    } else {
-      setUsernameCheck(false);
-      setUsernameHint("");
-    }
-  };
-
-  const checkPassword = (password) => {
-    if (password === "") {
-      setPasswordCheck(true);
-      setPasswordHint("不能為空");
-    } else {
-      setPasswordCheck(false);
-      setPasswordHint("");
-    }
-  };
-
   return (
     <div>
-    
-    <div className='alert'>
-      {alert ? (
-        <Fade in={true}  >
-        <Alert
-          severity="error"
-          onClose={() => {
-            setAlert(false);
-          }}
-        >
-          This is a erorr alert — check it out!
-        </Alert>
-        </Fade>
-      ) : null}
-    </div>
-    
+      <div className="alert">
+        {alert ? (
+          <Fade in={true}>
+            <Alert
+              severity="error"
+              onClose={() => {
+                setAlert(false);
+              }}
+            >
+              login failed — check your username and password !
+            </Alert>
+          </Fade>
+        ) : null}
+      </div>
+
       <div className="wrapper">
-        
         <motion.div
           exit={{ opacity: 0 }}
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ type: "spring", stiffness: 200, duration: 0.1 }}
         >
-
           <Paper elevation={20}>
             <form onSubmit={submitLogin}>
               <Stack className="login-form">
@@ -101,7 +79,11 @@ function LoginPage() {
                   value={username}
                   onChange={(e) => {
                     setUseranme(e.target.value);
-                    checkUser(e.target.value);
+                    Validation.checkString(
+                      e.target.value,
+                      setUsernameCheck,
+                      setUsernameHint
+                    );
                   }}
                 ></TextField>
                 <TextField
@@ -112,7 +94,11 @@ function LoginPage() {
                   type={showPassword ? "text" : "password"}
                   onChange={(e) => {
                     setPassword(e.target.value);
-                    checkPassword(e.target.value);
+                    Validation.checkString(
+                      e.target.value,
+                      setPasswordCheck,
+                      setPasswordHint
+                    );
                   }}
                   error={passwordCheck}
                   helperText={passwordHint}
@@ -132,8 +118,10 @@ function LoginPage() {
                 <Button
                   type="submit"
                   onClick={() => {
-                    checkUser(username);
-                    checkPassword(password);
+                    Validation.checkString(username,setUsernameCheck,
+                      setUsernameHint);
+                    Validation.checkString(password,setPasswordCheck,
+                      setPasswordHint);
                     setAlert(true);
                   }}
                 >
