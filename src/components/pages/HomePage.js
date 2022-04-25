@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 function HomePage() {
   return (
-    <div className="wrapper">
+    <div className="wrapper-home ">
       <motion.div
         exit={{ opacity: 0 }}
         initial={{ opacity: 0, y: -100 }}

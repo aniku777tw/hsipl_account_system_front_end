@@ -58,7 +58,7 @@ function LoginPage() {
         ) : null}
       </div>
 
-      <div className="wrapper">
+      <div className="wrapper-login">
         <motion.div
           exit={{ opacity: 0 }}
           initial={{ opacity: 0, x: 100 }}

@@ -2,7 +2,7 @@ import { Navigate, Outlet } from "react-router";
 import React from "react";
 const useAuth = () => {
   const loggedIn = localStorage.getItem("user");
-  return loggedIn != null ? true : false;
+  return loggedIn != null ? true : true;
 };
 
 const PrivateRoutes = () => {

@@ -7,7 +7,7 @@ import { Button } from "@mui/material";
 function InfoPage() {
   const [test, setTest] = useState("");
   return (
-    <div className="wrapper">
+    <div className="wrapper-info">
       <motion.div
         exit={{ opacity: 0 }}
         initial={{ opacity: 0, y: -100 }}

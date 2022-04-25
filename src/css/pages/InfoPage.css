@@ -1,7 +1,7 @@
-.wrapper {
-  text-align: center;
-  height: 100vh; /* Magic here */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+.wrapper-info {
+    text-align: center;
+    height: 100vh; /* Magic here */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

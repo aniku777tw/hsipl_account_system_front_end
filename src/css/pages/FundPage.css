@@ -1,7 +1,24 @@
-.wrapper {
-  text-align: center;
-  height: 100vh; /* Magic here */
+.wrapper-fund {
+  margin-top: 130px;
+  height:auto;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+}
+
+
+@media screen and (max-width: 960px) {
+
+  .wrapper-fund {
+    margin-top: 100px;
+    height:500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .css-1p5q5e5-MuiStack-root>:not(style)+:not(style){
+    max-height:400px;
+  }
 }
