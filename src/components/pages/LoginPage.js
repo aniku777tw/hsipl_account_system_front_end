@@ -43,7 +43,7 @@ function LoginPage() {
 
   return (
     <div>
-      <div className="alert">
+      {/* <div className="alert">
         {alert ? (
           <Fade in={true}>
             <Alert
@@ -56,7 +56,7 @@ function LoginPage() {
             </Alert>
           </Fade>
         ) : null}
-      </div>
+      </div> */}
 
       <div className="wrapper-login">
         <motion.div

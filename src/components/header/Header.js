@@ -24,10 +24,10 @@ function Header() {
     setDrawerState(!drawerState);
   }
   const location = useLocation();
-  // console.log(location.pathname);
-  // if (localStorage.getItem('user')===null) {
-  //   return null;
-  // }
+  console.log(location.pathname);
+  if (localStorage.getItem('user')===null) {
+    return null;
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <HeaderDrawer
