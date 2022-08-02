@@ -35,7 +35,7 @@ function SignUpPage() {
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
   const submitSignup = async (e) => {
     e.preventDefault();
-    AuthService.signup(name, username, password, checkPassword).then(() => {
+    AuthService.signup(name, username, password, checkPassword,email,phone).then(() => {
       console.log("good");
     });
   };
