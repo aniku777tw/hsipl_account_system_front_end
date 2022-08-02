@@ -20,7 +20,9 @@ function SignUpPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
-  
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
   const [nameError, setNameError] = useState(false);
   const [nameHint, setNameHint] = useState("");
   const [usernameError, setUsernameError] = useState(false);
@@ -28,14 +30,13 @@ function SignUpPage() {
   const [passwordError, setPasswordError] = useState(false);
   const [passwordHint, setPasswordHint] = useState("");
 
-
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
   const submitSignup = async (e) => {
     e.preventDefault();
-    AuthService.signup(name,username, password,checkPassword).then(() => {
-      console.log("good")
+    AuthService.signup(name, username, password, checkPassword).then(() => {
+      console.log("good");
     });
   };
   return (
@@ -56,8 +57,8 @@ function SignUpPage() {
                 label="姓名"
                 placeholder="姓名"
                 value={name}
-                error = {nameError}
-                helperText = {nameHint}
+                error={nameError}
+                helperText={nameHint}
                 onChange={(e) => {
                   setName(e.target.value);
                   Validation.checkString(
@@ -82,6 +83,22 @@ function SignUpPage() {
                     setUsernameHint
                   );
                 }}
+              ></TextField>
+              <TextField
+                required
+                label="電子信箱"
+                placeholder="電子信箱"
+                value={email}
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+              ></TextField>
+              <TextField
+                required
+                label="手機電話"
+                placeholder="手機電話"
+                value={phone}
+                type="text"
+                onChange={(e) => setPhone(e.target.value)}
               ></TextField>
               <TextField
                 required
@@ -133,6 +150,7 @@ function SignUpPage() {
                   ),
                 }}
               ></TextField>
+
               <Button type="submit">註冊</Button>
               <Divider></Divider>
               <div className="login-row">
