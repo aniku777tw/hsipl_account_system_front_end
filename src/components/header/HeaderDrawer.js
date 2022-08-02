@@ -9,14 +9,14 @@ import {
   Avatar,
 } from "@mui/material";
 import React from "react";
-import { Home, Money, Info } from "@mui/icons-material";
+import { Home, Money,Web,Info } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import "../../css/header/HeaderDrawer.css";
 
 function HeaderDrawer({ controller, state }) {
-  const drawerLabelText = ["首頁", "經費表", "關於"];
-  const drawerLabelIcon = [<Home />, <Money />, <Info />];
-  const drawerRedirectPath = ["/home", "/fund", "/info"];
+  const drawerLabelText = ["首頁", "經費表","實驗室網站管理", "關於"];
+  const drawerLabelIcon = [<Home />, <Money />,<Web /> ,<Info />];
+  const drawerRedirectPath = ["/home", "/fund","/web" ,"/info"];
   const drawerElement = () => (
     <Box sx={{ width: 300 }} onClick={controller} onKeyDown={controller}>
       <List>

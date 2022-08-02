@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import {
   Paper,
   TextField,
@@ -15,13 +15,17 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 import "../../css/pages/LoginPage.css";
-import AuthService from "../../service/Auth.js";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Validation from "../../method/CheckLoginSignup.js";
+import AuthService from "../../service/Auth"
 
 function LoginPage() {
+
+
+
   let navigate = useNavigate();
+
   const [username, setUseranme] = useState("");
   const [usernameError, setUsernameError] = useState(false);
   const [usernameHint, setUsernameHint] = useState("");
@@ -29,21 +33,23 @@ function LoginPage() {
   const [passwordHint, setPasswordHint] = useState("");
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState(false);
-
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
-
+  useEffect(() => {
+    if("user" in localStorage){
+      navigate("/home");
+    }
+  });
   const submitLogin = async (e) => {
     e.preventDefault();
     AuthService.login(username, password).then(() => {
       navigate("/home");
     });
   };
-
   return (
     <div>
-      {/* <div className="alert">
+      <div className="alert">
         {alert ? (
           <Fade in={true}>
             <Alert
@@ -56,7 +62,7 @@ function LoginPage() {
             </Alert>
           </Fade>
         ) : null}
-      </div> */}
+      </div>
 
       <div className="wrapper-login">
         <motion.div
